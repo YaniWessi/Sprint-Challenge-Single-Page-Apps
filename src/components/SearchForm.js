@@ -6,7 +6,7 @@ export default function SearchForm() {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const results = chars.filter(char =>
+    const results = searchTerm.filter(char =>
       char.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);

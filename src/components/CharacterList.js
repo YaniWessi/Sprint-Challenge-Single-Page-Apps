@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Route } from "react-router-dom";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
-} from "reactstrap";
+import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+
+// import { getHeapSpaceStatistics } from "v8";
 
 export default function CharacterList() {
   const [chars, setChars] = useState([]);
@@ -19,7 +12,7 @@ export default function CharacterList() {
     axios
       .get("https://rickandmortyapi.com/api/character/")
       .then(response => {
-        setChars(response.data.results);
+        setChars(response.data);
         console.log(response.data.results);
       })
       .catch(error => {
@@ -32,21 +25,27 @@ export default function CharacterList() {
   return (
     <section className="character-list">
       {chars.map(char => (
-        <charDetails key={char.id} char={char} />
+        <CharDetails
+          image={char.image}
+          name={char.name}
+          status={char.status}
+          location={char.location}
+          species={char.spacies}
+        />
       ))}
     </section>
   );
 }
 
-function charDetails({ char }) {
+function CharDetails({ char }) {
   return (
     <Card className="char-card">
       <CardBody>
         <CardTitle>{char.name}</CardTitle>
-        <CardSubtitle>Status: {char.status}</CardSubtitle>
-        <CardSubtitle>Spacies: {char.species}</CardSubtitle>
-        <CardSubtitle>Origin: {char.origin.name}</CardSubtitle>
-        <CardSubtitle>Current Location: {char.location.name}</CardSubtitle>
+        <p>Status: {char.status}</p>
+        <p>Spacies: {char.species}</p>
+        <p>Origin: {char.origin.name}</p>
+        <p>Current Location: {char.location.name}</p>
       </CardBody>
     </Card>
   );

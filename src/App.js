@@ -4,6 +4,7 @@ import Header from "./components/Header.js";
 import CharacterList from "./components/CharacterList.js";
 import WelcomePage from "./components/WelcomePage.js";
 import SearchForm from "./components/SearchForm.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   return (
