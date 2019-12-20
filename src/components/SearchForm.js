@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function SearchForm() {
+const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [searchResults, setSearchResults] = useState([]);
@@ -39,4 +39,6 @@ export default function SearchForm() {
       </div>
     </section>
   );
-}
+};
+
+export default SearchForm;
